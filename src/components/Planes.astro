@@ -1,0 +1,104 @@
+---
+const planes = [
+  {
+    id: 'starter',
+    icon: '🚀',
+    name: 'Starter',
+    desc: 'Para empezar a tener presencia online',
+    price: 29,
+    featured: false,
+    features: [
+      { text: 'Landing page de una sola página', ok: true },
+      { text: 'Diseño con tus imágenes y colores', ok: true },
+      { text: 'Optimizada para móvil', ok: true },
+      { text: 'Dominio incluido (.es o .com)', ok: true },
+      { text: 'Hosting y SSL incluidos', ok: true },
+      { text: 'Entrega en 72 horas', ok: true },
+      { text: 'Formulario de contacto', ok: false },
+      { text: 'Secciones adicionales', ok: false },
+    ],
+  },
+  {
+    id: 'pro',
+    icon: '⭐',
+    name: 'Pro',
+    desc: 'Para captar clientes desde el primer día',
+    price: 49,
+    featured: true,
+    features: [
+      { text: 'Landing page de una sola página', ok: true },
+      { text: 'Diseño con tus imágenes y colores', ok: true },
+      { text: 'Optimizada para móvil', ok: true },
+      { text: 'Dominio incluido (.es o .com)', ok: true },
+      { text: 'Hosting y SSL incluidos', ok: true },
+      { text: 'Entrega en 72 horas', ok: true },
+      { text: 'Formulario de contacto', ok: true, bold: true },
+      { text: 'Secciones adicionales', ok: false },
+    ],
+  },
+  {
+    id: 'business',
+    icon: '🏆',
+    name: 'Business',
+    desc: 'La web completa que tu negocio merece',
+    price: 79,
+    featured: false,
+    features: [
+      { text: '5 secciones a tu medida', ok: true, bold: true },
+      { text: 'Diseño con tus imágenes y colores', ok: true },
+      { text: 'Optimizada para móvil', ok: true },
+      { text: 'Dominio incluido (.es o .com)', ok: true },
+      { text: 'Hosting y SSL incluidos', ok: true },
+      { text: 'Entrega en 72 horas', ok: true },
+      { text: 'Formulario de contacto', ok: true, bold: true },
+      { text: 'Integración con Google Maps', ok: true, bold: true },
+    ],
+  },
+];
+---
+<section class="planes" id="planes">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Sin sorpresas</span>
+      <h2>Elige tu plan</h2>
+      <p>Alta gratuita. Sin permanencia. Cancela cuando quieras.</p>
+    </div>
+    <div class="planes-grid">
+      {planes.map((plan) => (
+        <div class={`plan-card reveal${plan.featured ? ' featured' : ''}`} data-plan={plan.id}>
+          {plan.featured && <div class="plan-badge">Más popular</div>}
+          <div class="plan-header">
+            <div class="plan-icon">{plan.icon}</div>
+            <div class="plan-name">{plan.name}</div>
+            <div class="plan-desc">{plan.desc}</div>
+          </div>
+          <div class="plan-price">
+            <span class="price-currency">€</span>
+            <span class="price-num">{plan.price}</span>
+            <span class="price-period">/mes</span>
+          </div>
+          <div class="plan-alta">Alta gratuita · sin permanencia</div>
+          <ul class="plan-features">
+            {plan.features.map((f) => (
+              <li class={!f.ok ? 'disabled' : ''}>
+                <span class={f.ok ? 'check' : 'cross'}>{f.ok ? '✓' : '✗'}</span>
+                {f.bold ? <strong>{f.text}</strong> : f.text}
+              </li>
+            ))}
+          </ul>
+          <button
+            class={`btn-plan${plan.featured ? ' btn-plan-featured' : ''}`}
+            onclick={`selectPlan('${plan.id}')`}
+          >
+            Quiero este plan
+          </button>
+        </div>
+      ))}
+    </div>
+    <p class="planes-note">
+      ¿Tienes dudas? Escríbenos a{' '}
+      <a href="mailto:hola@webrapida.es">hola@webrapida.es</a>{' '}
+      y te aconsejamos sin compromiso.
+    </p>
+  </div>
+</section>

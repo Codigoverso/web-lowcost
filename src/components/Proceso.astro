@@ -1,0 +1,46 @@
+---
+const steps = [
+  {
+    num: '01',
+    title: 'Rellena el formulario',
+    desc: 'Elige tu plan, cuéntanos tu negocio, súbenos tus imágenes y comparte 3 webs que te gusten como inspiración. Listo.',
+  },
+  {
+    num: '02',
+    title: 'La IA trabaja por ti',
+    desc: 'Nuestra inteligencia artificial diseña tu web basándose en tu sector, tu estilo y tu competencia. Tú no tienes que hacer nada.',
+  },
+  {
+    num: '03',
+    title: 'Tu web, en 72 horas',
+    desc: 'Recibes el enlace de tu web lista para funcionar. Revisamos juntos, ajustamos lo que necesites y la publicamos.',
+  },
+];
+---
+<section class="proceso" id="proceso">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Sin complicaciones</span>
+      <h2>Cómo funciona</h2>
+      <p>Tres pasos. Nada más.</p>
+    </div>
+    <div class="proceso-steps">
+      {steps.map((step, i) => (
+        <>
+          <div class="step reveal">
+            <div class="step-num">{step.num}</div>
+            <div class="step-content">
+              <h3>{step.title}</h3>
+              <p>{step.desc}</p>
+            </div>
+          </div>
+          {i < steps.length - 1 && (
+            <div class="step-connector">
+              <div class="connector-line"></div>
+            </div>
+          )}
+        </>
+      ))}
+    </div>
+  </div>
+</section>
