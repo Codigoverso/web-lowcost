@@ -251,6 +251,6 @@ document.getElementById('main-form')?.addEventListener('submit', async (e) => {
     btn.querySelector('.btn-submit-text')?.classList.remove('hidden');
     btn.querySelector('.btn-submit-loading')?.classList.add('hidden');
     btn.disabled = false;
-    alert('Hubo un error al enviar. Por favor inténtalo de nuevo o escríbenos a hola@webrapida.es');
+    alert('Hubo un error al enviar. Por favor inténtalo de nuevo o escríbenos a hola@devtools.es');
   }
 });

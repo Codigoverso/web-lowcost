@@ -34,8 +34,8 @@ export const POST: APIRoute = async ({ request }) => {
   const resend = new Resend(import.meta.env.RESEND_API_KEY);
 
   const { error } = await resend.emails.send({
-    from: import.meta.env.EMAIL_FROM ?? 'WebRápida <noreply@webrapida.es>',
-    to: [import.meta.env.EMAIL_TO ?? 'hola@webrapida.es'],
+    from: import.meta.env.EMAIL_FROM ?? 'DevWebs <noreply@devtools.es>',
+    to: [import.meta.env.EMAIL_TO ?? 'hola@devtools.es'],
     replyTo: email,
     subject: `Nueva solicitud: ${planLabels[plan] ?? plan} — ${negocio}`,
     html: `
