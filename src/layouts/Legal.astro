@@ -1,0 +1,45 @@
+---
+import Base from './Base.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  lastUpdated?: string;
+}
+const { title, lastUpdated = '11 de mayo de 2025' } = Astro.props;
+---
+<Base title={`${title} — DevWebs`}>
+  <header class="legal-header">
+    <div class="container">
+      <a href="/" class="logo">
+        <span class="logo-icon">⚡</span>
+        <span>Dev<strong>Webs</strong></span>
+      </a>
+    </div>
+  </header>
+
+  <main class="legal-main">
+    <div class="container">
+      <div class="legal-card">
+        <div class="legal-meta">
+          <span class="legal-tag">Legal</span>
+          <span class="legal-date">Última actualización: {lastUpdated}</span>
+        </div>
+        <h1>{title}</h1>
+        <div class="legal-body">
+          <slot />
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="legal-footer">
+    <div class="container">
+      <p>© {new Date().getFullYear()} DevWebs by devtools.es &mdash;
+        <a href="/aviso-legal">Aviso legal</a> ·
+        <a href="/privacidad">Privacidad</a> ·
+        <a href="/cookies">Cookies</a>
+      </p>
+    </div>
+  </footer>
+</Base>

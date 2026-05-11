@@ -1,0 +1,41 @@
+---
+---
+<div class="cookie-banner" id="cookie-banner" aria-live="polite">
+  <div class="cookie-inner">
+    <div class="cookie-text">
+      <span class="cookie-icon">🍪</span>
+      <p>
+        Usamos cookies propias y de terceros para analizar el tráfico y mejorar tu experiencia.
+        Puedes aceptarlas, rechazarlas o configurarlas. Más info en nuestra
+        <a href="/cookies">política de cookies</a>.
+      </p>
+    </div>
+    <div class="cookie-actions">
+      <button class="cookie-btn cookie-reject" id="cookie-reject">Rechazar</button>
+      <button class="cookie-btn cookie-accept" id="cookie-accept">Aceptar todas</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const banner = document.getElementById('cookie-banner')!;
+  const consent = localStorage.getItem('cookie-consent');
+
+  if (consent) {
+    banner.remove();
+  } else {
+    banner.classList.add('visible');
+  }
+
+  document.getElementById('cookie-accept')?.addEventListener('click', () => {
+    localStorage.setItem('cookie-consent', 'accepted');
+    banner.classList.remove('visible');
+    setTimeout(() => banner.remove(), 400);
+  });
+
+  document.getElementById('cookie-reject')?.addEventListener('click', () => {
+    localStorage.setItem('cookie-consent', 'rejected');
+    banner.classList.remove('visible');
+    setTimeout(() => banner.remove(), 400);
+  });
+</script>
